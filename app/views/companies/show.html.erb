@@ -1,0 +1,45 @@
+<div class="container mt-5">
+
+  <p>
+    <strong>Name:</strong>
+    <%= @company.name %>
+  </p>
+
+  <p>
+    <strong>Address:</strong>
+    <%= @company.address %>
+  </p>
+
+  <p>
+    <strong>Contact:</strong>
+    <%= @company.contact %>
+  </p>
+
+  <p>
+    <strong>Gstno:</strong>
+    <span class="text-uppercase"> <%= @company.gstno %></span>
+  </p>
+
+  <p>
+    <strong>State:</strong>
+    <%= @company.state %>
+  </p>
+
+  <p>
+    <strong>Code:</strong>
+    <%= @company.code %>
+  </p>
+
+  <p>
+    <strong>Account no:</strong>
+    <%= @company.account_no %>
+  </p>
+
+  <p>
+    <strong>ifsc Code:</strong>
+    <%= @company.ifsc_code %>
+  </p>
+
+  <%= link_to 'Edit', edit_company_path(@company) %> |
+  <%= link_to 'Back', companies_path %>
+</div>

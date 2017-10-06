@@ -1,0 +1,30 @@
+<div class="container mt-5">
+
+  <p>
+    <strong>Name:</strong>
+    <%= @client.name %>
+  </p>
+
+  <p>
+    <strong>Address:</strong>
+    <%= @client.address %>
+  </p>
+
+  <p>
+    <strong>Gstno:</strong>
+    <%= @client.gstno %>
+  </p>
+
+  <p>
+    <strong>State:</strong>
+    <%= @client.state %>
+  </p>
+
+  <p>
+    <strong>Code:</strong>
+    <%= @client.code %>
+  </p>
+
+  <%= link_to 'Edit', edit_client_path(@client) %> |
+  <%= link_to 'Back', clients_path %>
+</div>

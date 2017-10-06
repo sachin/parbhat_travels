@@ -1,0 +1,239 @@
+// Place all the styles related to the companies controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+@import "font-awesome";
+
+.jumbotron {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin-bottom: 0;
+  background-color: #fff;
+}
+
+.album {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: #f7f7f7;
+}
+
+.card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, .125);
+  border-radius: .25rem;
+}
+
+.card {
+  float: left;
+  width: 33.333%;
+  padding: .75rem;
+  //margin-bottom: 2rem;
+  border: 0;
+  min-height: 280px;
+  .table {
+    height: 100%;
+    width: 100%;
+    display: table;
+    .table-row{
+      display: table-row;
+      .table-cell{
+        display: table-cell;
+        a.main-section{
+          color: #fff;
+          font-size: 30px;
+          text-shadow: 4px 4px 10px #000;
+          text-align: center;
+          address{
+            line-height: .7;
+            small{
+              font-size:40%;
+            }
+          }
+        }
+        ul {
+          position: absolute;
+          top:11px;
+          right: 25px;
+          a {
+            color: #fff;
+            text-shadow: 4px 4px 10px #000;
+          }
+          div.dropdown-menu a{
+            color: black;
+            text-shadow: none;
+          }
+        }
+        a:hover, a:focus {
+          text-decoration-line: none;
+        }
+      }
+    }
+  }
+}
+.row-bordered{
+  border-bottom: 1px solid #2E2F30;
+  margin: 15px 0;
+}
+div.invoice_show{
+  border: 3px solid darkblue;
+  .border-right{
+    border-right: 3px solid darkblue;
+  }
+  .border_bottom{
+    border-bottom: 3px solid darkblue;
+  }
+  .border_top{
+    border-top: 3px solid darkblue;
+  }
+  .both_border{
+    border-bottom: 3px solid darkblue;
+    border-top: 3px solid darkblue;
+  }
+
+  .light_border_bottom{
+    border-bottom: 1px solid darkblue;
+  }
+  .light_border_right{
+    border-right: 1px solid darkblue;
+  }
+  .fill{
+    background-color: cornflowerblue;
+    color: darkblue;
+  }
+  .text-center{
+    text-align: center;
+  }
+  .height-100{
+    height: 100%;
+  }
+  .signature{
+    font-size: 24px;
+  }
+  .big-gap{
+    margin-top: 100px;
+  }
+  .item-gap{
+    margin-top:50px;
+  }
+}
+.no-gutters {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+}
+
+.page-break	{ display: none; }
+
+@media print {
+
+}
+@media print {
+  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+    float: left;
+    font-size: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  .row{
+    margin-left: -5px;
+    margin-right: -5px;
+  }
+  .col-sm-12 {
+    width: 100%;
+  }
+  .col-sm-11 {
+    width: 91.66666667%;
+  }
+  .col-sm-10 {
+    width: 83.33333333%;
+  }
+  .col-sm-9 {
+    width: 75%;
+  }
+  .col-sm-8 {
+    width: 66.66666667%;
+  }
+  .col-sm-7 {
+    width: 58.33333333%;
+  }
+  .col-sm-6 {
+    width: 50%;
+  }
+  .col-sm-5 {
+    width: 41.66666667%;
+  }
+  .col-sm-4 {
+    width: 33.33333333%;
+  }
+  .col-sm-3 {
+    width: 25%;
+  }
+  .col-sm-2 {
+    width: 16.66666667%;
+  }
+  .col-sm-1 {
+    width: 8.33333333%;
+  }
+  .page-break{
+    display: block; page-break-before: always;
+  }
+  h2{
+    font-size: 8px;
+  }
+  h5{
+    font-size: 6px;
+  }
+  .mt-5, .mt-3{
+    margin-top:7px !important;
+  }
+
+  .invoice_show{
+    border: 1px solid darkblue !important;
+    .border-right{
+      border-right: 1px solid darkblue !important;
+    }
+    .border_bottom{
+      border-bottom: 1px solid darkblue !important;
+    }
+    .border_top{
+      border-top: 1px solid darkblue !important;
+    }
+    .both_border{
+      border-bottom: 1px solid darkblue !important;
+      border-top: 1px solid darkblue !important;
+    }
+
+    .light_border_bottom{
+      border-bottom: 0.5px solid darkblue !important;
+    }
+    .light_border_right{
+      border-right: 0.5px solid darkblue !important;
+    }
+    .signature{
+      font-size: 7px !important;
+    }
+
+    .big-gap{
+      margin-top: 15px !important;
+    }
+    .item-gap{
+      margin-top: 10px !important;
+    }
+  }
+  nav, a{
+    display: none !important;
+  }
+}

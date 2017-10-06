@@ -1,0 +1,53 @@
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Invoices</h1>
+
+    <p class="lead text-muted">List of all Invoices generated under PRABHAT GROUP</p>
+
+    <p>
+      <%= link_to "Generate Invoice", new_invoice_path, class: 'btn btn-primary' %>
+    </p>
+  </div>
+</section>
+
+<div class="album">
+  <div class="container">
+
+
+    <% @invoices.each do |month, invoices| %>
+        <div class="row row-bordered">
+          <h5><%= pluralize(invoices.count, 'Invoice') %> for <%= month.strftime('%B, %Y') %> </h5>
+        </div>
+        <div class="row">
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th>Invoice no</th>
+              <th>Company</th>
+              <th>Client</th>
+              <th>Invoice date</th>
+              <th>Invoice Amount</th>
+              <th colspan="3"></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% invoices.each do |invoice| %>
+                <tr>
+                  <th scope="row"><%= invoice.invoice_no %></th>
+                  <td><%= invoice.company.name %></td>
+                  <td><%= invoice.client.name %></td>
+                  <td><%= invoice.invoice_date %></td>
+                  <td><%= invoice.total_amount %></td>
+                  <td><%= link_to 'Show', invoice %></td>
+                  <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
+                  <td><%= link_to 'Destroy', invoice, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+    <% end %>
+
+  </div>
+</div>

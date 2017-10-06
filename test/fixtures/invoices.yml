@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company: one
+  client: one
+  invoice_no: 1
+  invoice_date: 2017-09-20
+  reverse_charge: MyString
+  transport_mode: MyString
+  vehicle_no: MyString
+  date_of_supply: MyString
+  place_for_supply: MyString
+
+two:
+  company: two
+  client: two
+  invoice_no: 1
+  invoice_date: 2017-09-20
+  reverse_charge: MyString
+  transport_mode: MyString
+  vehicle_no: MyString
+  date_of_supply: MyString
+  place_for_supply: MyString

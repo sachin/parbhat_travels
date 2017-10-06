@@ -1,0 +1,77 @@
+<div class="row item-gap">
+  <div class="col-md-6 col-sm-6 text-uppercase both_border text-center fill border-right">
+    total
+  </div>
+  <div class="col-md-1 col-sm-1 both_border border-right">
+    <%= @invoice.total_amount %>
+  </div>
+  <div class="col-md-1 col-sm-1 both_border border-right">
+
+  </div>
+  <div class="col-md-1 col-sm-1 both_border border-right">
+    <%= @invoice.total_tax %>
+  </div>
+  <div class="col-md-1 col-sm-1 both_border border-right">
+
+  </div>
+  <div class="col-md-1 col-sm-1 both_border border-right">
+    <%= @invoice.total_tax %>
+  </div>
+  <div class="col-md-1 col-sm-1 both_border">
+    <%= @invoice.total_amount_with_tax %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-sm-6 border-right">
+    <div class='row'>
+      <div class="col-md-12 col-sm-12 text-capitalize text-center fill  border_bottom">total invoice amount in words
+      </div>
+      <div class="col-md-12 col-sm-12"><%= number_to_currency_in_words(@invoice.total_amount_with_tax, currency: :rupee) %></div>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-6">
+    <div class='row text-capitalize'>
+      <div class="col-md-10 col-sm-10 border-right border_bottom">total amount before tax</div>
+      <div class="col-md-2 col-sm-2 border_bottom"><%= @invoice.total_amount %></div>
+
+      <div class="col-md-10 col-sm-10 border-right border_bottom">CGST</div>
+      <div class="col-md-2 col-sm-2 border_bottom"><%= @invoice.total_tax %></div>
+
+      <div class="col-md-10 col-sm-10 border-right border_bottom">SGST</div>
+      <div class="col-md-2 col-sm-2 border_bottom"><%= @invoice.total_tax %></div>
+
+      <div class="col-md-10 col-sm-10 border-right border_bottom">total amount after tax</div>
+      <div class="col-md-2 col-sm-2 border_bottom">
+        <strong><%= @invoice.total_amount_with_tax %></strong></div>
+
+      <div class="col-md-10 col-sm-10 border-right border_bottom">GST on reverse charges</div>
+      <div class="col-md-2 col-sm-2 border_bottom">0</div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-sm-6 border-right">
+    <div class='row text-uppercase'>
+      <div class="col-md-12 col-sm-12 text-center fill both_border">Bank Details</div>
+      <div class="col-md-3 col-sm-3 border-right border_bottom"> Bank ac</div>
+      <div class="col-md-9 col-sm-9 border_bottom"><%= @invoice.company.account_no %> </div>
+
+      <div class="col-md-3 col-sm-3 border-right border_bottom"> ifsc code</div>
+      <div class="col-md-9 col-sm-9 border_bottom"><%= @invoice.company.ifsc_code %> </div>
+
+      <div class="col-md-12 col-sm-12"> Terms and conditions</div>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-6">
+    <div class='row'>
+      <div class="col-md-12 col-sm-12">Certified that the particulars given above are true and correct</div>
+      <div class="col-md-12 col-sm-12 text-uppercase text-center signature">
+        <strong> <%= @invoice.company.name %></strong></div>
+      <div class="col-md-12 col-sm-12 text-center big-gap">
+        <strong>Authorised signatory</strong>
+      </div>
+    </div>
+  </div>
+</div>

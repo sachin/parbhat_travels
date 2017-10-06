@@ -1,0 +1,58 @@
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Clients</h1>
+
+    <p class="lead text-muted">List of all clients under PRABHAT companies</p>
+
+    <p>
+      <%= link_to "Add Client", new_client_path, class: 'btn btn-primary' %>
+    </p>
+  </div>
+</section>
+
+<div class="album text-muted">
+  <div class="container">
+
+    <div class="row">
+      <% @clients.each do |client| %>
+          <% bck_clr_1 = "#%06x" % (rand * 0xffffff) %>
+          <% bck_clr_2 = "#%06x" % (rand * 0xffffff) %>
+          <div class="card">
+
+            <div class="table" table style="background: <%= bck_clr_1%>;
+                    background: -webkit-linear-gradient(left, <%=bck_clr_1%> , <%=bck_clr_2%>);
+                    background: -o-linear-gradient(right, <%=bck_clr_1%> , <%=bck_clr_2%>);
+                    background: -moz-linear-gradient(right, <%=bck_clr_1%> , <%=bck_clr_2%>);
+                    background: linear-gradient(to right, <%=bck_clr_1%> , <%=bck_clr_2%>);">
+              <div class="table-row">
+                <div class="table-cell">
+                  <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                      <a class="nav-link" id="dropdown<%= client.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= fa_icon "list" %></a>
+
+                      <div class="dropdown-menu" aria-labelledby="dropdown<%= client.id %>">
+                        <%= link_to "Create invoice", new_client_invoice_path(client), class: 'dropdown-item' %>
+                        <%= link_to "Invoices", client_invoices_path(client), class: 'dropdown-item' %>
+                        <%= link_to "Edit", edit_client_path(client), class: 'dropdown-item' %>
+                        <%= link_to "Delete", client, method: :delete, data: {confirm: "Are you sure to delete \"#{client.name}\"?"}, class: 'dropdown-item' %>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class=" table-cell align-middle ">
+                  <%= link_to client, class: 'main-section' do %>
+                      <div class="text-uppercase text-center"><%= client.name %></div>
+                      <address>
+                        <small><%= client.address %><br/> <%= client.state %><br/>
+                          GST: <strong class="text-uppercase"><%= client.gstno%></strong></small>
+                      </address>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

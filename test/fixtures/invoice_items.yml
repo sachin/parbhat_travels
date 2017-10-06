@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  invoice: one
+  description: MyString
+  hsn_code: MyString
+  udm: MyString
+  quantity: 1
+  rate: 1
+  amount: 1
+  discount: 1
+
+two:
+  invoice: two
+  description: MyString
+  hsn_code: MyString
+  udm: MyString
+  quantity: 1
+  rate: 1
+  amount: 1
+  discount: 1

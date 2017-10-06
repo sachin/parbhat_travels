@@ -1,0 +1,55 @@
+<%= form_with(model: client, local: true) do |form| %>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-control #{validation_class(client, :name)}", id: :client_name %>
+        <% if (error_message_present_for?(client, :name)) %>
+            <div class="invalid-feedback">
+              <%== error_messages(client, :name) %>
+            </div>
+        <% end %>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <%= form.label :address %>
+        <%= form.text_field :address, class: "form-control #{validation_class(client, :address)}", id: :client_address %>
+        <% if (error_message_present_for?(client, :address)) %>
+            <div class="invalid-feedback">
+              <%== error_messages(client, :address) %>
+            </div>
+        <% end %>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <%= form.label :state %>
+        <%= form.text_field :state, class: "form-control #{validation_class(client, :state)}", id: :client_state %>
+        <% if (error_message_present_for?(client, :state)) %>
+            <div class="invalid-feedback">
+              <%== error_messages(client, :state) %>
+            </div>
+        <% end %>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <%= form.label :gstno %>
+        <%= form.text_field :gstno, class: "form-control #{validation_class(client, :gstno)}", id: :client_gstno %>
+        <% if (error_message_present_for?(client, :gstno)) %>
+            <div class="invalid-feedback">
+              <%== error_messages(client, :gstno) %>
+            </div>
+        <% end %>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <%= form.label :code %>
+        <%= form.text_field :code, class: "form-control #{validation_class(client, :code)}", id: :client_code %>
+        <% if (error_message_present_for?(client, :code)) %>
+            <div class="invalid-feedback">
+              <%== error_messages(client, :code) %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+
+    <%= form.submit nil, class: 'btn btn-primary' %>
+<% end %>

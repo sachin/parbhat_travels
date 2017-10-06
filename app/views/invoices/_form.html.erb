@@ -1,0 +1,130 @@
+<%= form_with(model: invoice, local: true) do |form| %>
+    <% if invoice.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(invoice.errors.count, "error") %> prohibited this invoice_item from being saved:</h2>
+
+          <ul>
+            <% invoice.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <%= form.label :company_id, 'Company' %>
+        <%= form.select :company_id, Company.all.collect { |company| [company.name, company.id] }, {prompt: 'Select Company'}, class: "form-control #{validation_class(invoice, :company_id)}", id: :invoice_company_id %>
+        <% if (error_message_present_for?(invoice, :company_id)) %>
+            <div class="invalid-feedback">
+              <%== error_messages(invoice, :company_id) %>
+            </div>
+        <% end %>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <%= form.label :client_id, 'Client' %>
+        <%= form.select :client_id, Client.all.collect { |client| [client.name, client.id] }, {prompt: 'Select Client'}, class: "form-control #{validation_class(invoice, :client_id)}", id: :invoice_client_id %>
+        <% if (error_message_present_for?(invoice, :client_id)) %>
+            <div class="invalid-feedback">
+              <%== error_messages(invoice, :client_id) %>
+            </div>
+        <% end %>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <%= form.label :invoice_date %>
+        <div class="form-group row" style="margin-bottom: 0;">
+          <div class="col-md-12 mb-3">
+            <%= form.date_select :invoice_date, {}, style: "display: inline-block; max-width:32.5%", class: "col-md-4  form-control #{validation_class(invoice, :invoice_date)}", id: :invoice_invoice_date %>
+            <% if (error_message_present_for?(invoice, :invoice_date)) %>
+                <div class="invalid-feedback">
+                  <%== error_messages(invoice, :invoice_date) %>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <%= form.label :date_of_supply %>
+        <%= form.text_field :date_of_supply, class: "form-control", id: :invoice_date_of_supply %>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <%= form.label :place_for_supply %>
+        <%= form.text_field :place_for_supply, class: "form-control", id: :invoice_place_for_supply %>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <%= form.label :reverse_charge, 'Reverse charge (Y/N)' %>
+        <%= form.text_field :reverse_charge, class: "form-control", id: :invoice_reverse_charge %>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <%= form.label :transport_mode %>
+        <%= form.text_field :transport_mode, class: "form-control", id: :invoice_transport_mode %>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <%= form.label :vehicle_no %>
+        <%= form.text_field :vehicle_no, class: "form-control", id: :invoice_vehicle_no %>
+      </div>
+    </div>
+    <div class="row row-bordered">
+      <div class="col-md-10 mb-3">
+        <h2>Invoice items</h2>
+      </div>
+      <div class="col-md-2 mb-3">
+        <a href="javascript:void(0)", rel='add_invoice_item' class='btn btn-primary'>Add invoice item</a>
+      </div>
+    </div>
+    <%= form.fields_for :invoice_items do |invoice_item| %>
+        <div class="row" rel="invoice_item">
+
+          <div class="col-md-4 mb-2">
+            <%= invoice_item.label :description %>
+            <%= invoice_item.text_field :description, class: "form-control" %>
+          </div>
+
+          <div class="col-md-1 mb-1">
+            <%= invoice_item.label :quantity %>
+            <%= invoice_item.text_field :quantity, class: "form-control" %>
+          </div>
+
+          <div class="col-md-2 mb-1">
+            <%= invoice_item.label :rate %>
+            <%= invoice_item.text_field :rate, class: "form-control" %>
+          </div>
+
+          <div class="col-md-1 mb-1">
+            <%= invoice_item.label :gst_rate %>
+            <%= invoice_item.text_field :gst_rate, class: "form-control" %>
+          </div>
+
+          <div class="col-md-1 mb-1">
+            <%= invoice_item.label :discount %>
+            <%= invoice_item.text_field :discount, class: "form-control" %>
+          </div>
+
+          <div class="col-md-1 mb-1">
+            <%= invoice_item.label :hsncode %>
+            <%= invoice_item.text_field :hsn_code, class: "form-control" %>
+          </div>
+
+          <div class="col-md-1 mb-1">
+            <%= invoice_item.label :udm %>
+            <%= invoice_item.text_field :udm, class: "form-control" %>
+          </div>
+          <div class="col-md-1 mb-1">
+            <div style="display: table;min-height: 100%">
+              <div style="display: table-row">
+              <div style="display: table-cell;" class="align-middle">
+              <a href='javascript:void(0)' rel="deleteInvoice" style='color:red;' title="Delete the invoice item"><%= fa_icon "close" %></a></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+    <% end %>
+    <%= form.submit nil, class: 'btn btn-primary' %>
+<% end %>

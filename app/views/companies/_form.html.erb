@@ -1,0 +1,84 @@
+<%= form_with(model: company, local: true) do |form| %>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-control #{validation_class(company, :name)}", id: :company_name %>
+        <% if (error_message_present_for?(company, :name)) %>
+            <div class="invalid-feedback">
+              <%== error_messages(company, :name) %>
+            </div>
+        <% end %>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <%= form.label :address %>
+        <%= form.text_field :address, class: "form-control #{validation_class(company, :address)}", id: :company_address %>
+        <% if (error_message_present_for?(company, :address)) %>
+            <div class="invalid-feedback">
+              <%== error_messages(company, :address) %>
+            </div>
+        <% end %>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <%= form.label :contact %>
+        <%= form.text_field :contact, class: "form-control #{validation_class(company, :contact)}", id: :company_contact %>
+        <% if (error_message_present_for?(company, :contact)) %>
+            <div class="invalid-feedback">
+              <%== error_messages(company, :contact) %>
+            </div>
+        <% end %>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <%= form.label :gstno %>
+        <%= form.text_field :gstno, class: "form-control #{validation_class(company, :gstno)}", id: :company_gstno %>
+        <% if (error_message_present_for?(company, :gstno)) %>
+            <div class="invalid-feedback">
+              <%== error_messages(company, :gstno) %>
+            </div>
+        <% end %>
+      </div>
+      <div class="col-md-6 mb-3">
+        <%= form.label :state %>
+        <%= form.text_field :state, class: "form-control #{validation_class(company, :state)}", id: :company_state %>
+        <% if (error_message_present_for?(company, :state)) %>
+            <div class="invalid-feedback">
+              <%== error_messages(company, :state) %>
+            </div>
+        <% end %>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <%= form.label :code %>
+        <%= form.text_field :code, class: "form-control #{validation_class(company, :code)}", id: :company_code %>
+        <% if (error_message_present_for?(company, :code)) %>
+            <div class="invalid-feedback">
+              <%== error_messages(company, :code) %>
+            </div>
+        <% end %>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <%= form.label :account_no %>
+        <%= form.text_field :account_no, class: "form-control #{validation_class(company, :account_no)}", id: :company_account_no %>
+        <% if (error_message_present_for?(company, :account_no)) %>
+            <div class="invalid-feedback">
+              <%== error_messages(company, :account_no) %>
+            </div>
+        <% end %>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <%= form.label :ifsc_code %>
+        <%= form.text_field :ifsc_code, class: "form-control #{validation_class(company, :ifsc_code)}", id: :company_ifsc_code %>
+        <% if (error_message_present_for?(company, :ifsc_code)) %>
+            <div class="invalid-feedback">
+              <%== error_messages(company, :ifsc_code) %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+
+    <%= form.submit nil, class: 'btn btn-primary' %>
+<% end %>

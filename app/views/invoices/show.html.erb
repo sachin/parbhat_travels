@@ -1,0 +1,162 @@
+<div class="container ">
+
+  <% ['Duplicate for Supplier', 'Duplicate for Service Provider'].each do |bill_for| %>
+      <div class="row mt-5 invoice_show section-to-print">
+        <div class="col-lg-12 col-sm-12">
+          <div class="row">
+            <div class="col-lg-8 col-sm-8 ml-auto text-center">
+              <h2 class="text-uppercase mb-0 mt-1"><strong><%= @invoice.company.name %></strong></h2>
+              <h5 class="text-uppercase mb-0"><%= @invoice.company.address %></h5>
+              <h5 class="text-uppercase mb-0"><%= @invoice.company.contact %></h5>
+            </div>
+            <div class="col-lg-2  col-sm-2 align-self-end text-center">
+              <%= bill_for %>
+            </div>
+          </div>
+          <div class="row mt-5 border_bottom_complete">
+            <div class="col-lg-12 col-sm-12 text-center">
+              <strong class="text-uppercase">GSTIN: <%= @invoice.company.gstno %></strong>
+            </div>
+          </div>
+
+          <div class="row mt-1 both_border fill">
+            <div class="col-lg-12 col-sm-12 text-center">
+              <strong class="text-uppercase">tax invoice</strong>
+            </div>
+          </div>
+
+          <div class="row text-uppercase">
+            <div class="col-lg-6 col-sm-6">
+              <div class="row border-right border_bottom">
+                <div class="col-lg-9 col-sm-6 border_bottom">
+                  invoice no :
+                </div>
+                <div class="col-lg-3 col-sm-6 border_bottom">
+                  <%= @invoice.invoice_no %>
+                </div>
+                <div class="col-lg-9 col-sm-6 border_bottom">
+                  INVOICE Date :
+                </div>
+                <div class="col-lg-3 col-sm-6 border_bottom">
+                  <%= @invoice.invoice_date.strftime('%d-%m-%Y') %>
+                </div>
+                <div class="col-lg-9 col-sm-6 border_bottom">
+                  Reverse charge (Y/N) :
+                </div>
+                <div class="col-lg-3 col-sm-6 border_bottom">
+                  <%= @invoice.reverse_charge %>
+                </div>
+
+                <div class="col-lg-3 col-sm-5">
+                  STATE :
+                </div>
+                <div class="col-lg-5 col-sm-3 border-right">
+                  <%= @invoice.company.state %>
+                </div>
+                <div class="col-lg-2 col-sm-3">
+                  CODE :
+                </div>
+                <div class="col-lg-2 col-sm-1">
+                  <%= @invoice.company.code %>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-sm-6">
+              <div class="row">
+                <div class="col-lg-7 col-sm-6 border_bottom">
+                  Transport mode :
+                </div>
+                <div class="col-lg-5 col-sm-6 border_bottom">
+                  <%= @invoice.transport_mode %>
+                </div>
+                <div class="col-lg-7 col-sm-6 border_bottom">
+                  vehicle number :
+                </div>
+                <div class="col-lg-5 col-sm-6 border_bottom">
+                  <%= @invoice.vehicle_no %>
+                </div>
+                <div class="col-lg-7 col-sm-6 border_bottom">
+                  Date of supply :
+                </div>
+                <div class="col-lg-5 col-sm-6 border_bottom">
+                  <%= @invoice.date_of_supply %>
+                </div>
+                <div class="col-lg-7 col-sm-6 border_bottom">
+                  Place of supply :
+                </div>
+                <div class="col-lg-5 col-sm-6 border_bottom">
+                  <%= @invoice.place_for_supply %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row text-uppercase mt-3">
+            <% ['Bill to Party', 'Ship to Party'].each_with_index do |section, index| %>
+                <div class="col-lg-6 col-sm-6">
+                  <div class="row border_bottom">
+                    <div class="col-lg-12 col-sm-12 text-center both_border fill <%= index.zero? ? 'border-right' : '' %>">
+                      <strong class="text-uppercase"><%= section %></strong>
+                    </div>
+                    <div class="col-lg-3 col-sm-3 border_bottom">
+                      name:
+                    </div>
+                    <div class="col-lg-9 col-sm-9 border_bottom <%= index.zero? ? 'border-right' : '' %>">
+                      <%= @invoice.client.name %>
+                    </div>
+                    <div class="col-lg-3 col-sm-3 border_bottom">
+                      address:
+                    </div>
+                    <div class="col-lg-9 col-sm-9 border_bottom <%= index.zero? ? 'border-right' : '' %>">
+                      <%= @invoice.client.address %>
+                    </div>
+                    <div class="col-lg-3 col-sm-3 border_bottom">
+                      gstin:
+                    </div>
+                    <div class="col-lg-9 col-sm-9 border_bottom <%= index.zero? ? 'border-right' : '' %>">
+                      <%= @invoice.client.gstno %>
+                    </div>
+                    <div class="col-lg-3 col-sm-3">
+                      STATE :
+                    </div>
+                    <div class="col-lg-5 col-sm-4 border-right">
+                      <%= @invoice.client.state %>
+                    </div>
+                    <div class="col-lg-2 col-sm-3">
+                      CODE :
+                    </div>
+                    <div class="col-lg-2 col-sm-2 <%= index.zero? ? 'border-right' : '' %>">
+                      <%= @invoice.client.code %>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+
+          <div class="row text-capitalize text-center mt-3 both_border" style="word-wrap: break-word">
+            <div class="col-lg-12 col-sm-12 fill">
+              <%= invoice_heading_row(@invoice) %>
+            </div>
+          </div>
+
+          <% @invoice.invoice_items.each_with_index do |invoice_item, index| %>
+              <div class="row light_border_bottom">
+                <div class="col-lg-12 col-sm-12 text-capitalize text-center">
+                    <%= invoice_content_row(@invoice, invoice_item, index) %>
+                  </div>
+              </div>
+          <% end %>
+
+          <% if @invoice.is_interstate?%>
+          <%= render partial: 'interstate_bottom_section'%>
+          <%else%>
+              <%= render partial: 'intrastate_bottom_section'%>
+          <%end%>
+        </div>
+      </div>
+        <div class="page-break"></div>
+  <% end %>
+  <a href="javascript:void(0)" rel="print">Print</a>
+  <%= link_to 'Edit', edit_invoice_path(@invoice) %>
+  <%= link_to 'Back', invoices_path %>
+</div>

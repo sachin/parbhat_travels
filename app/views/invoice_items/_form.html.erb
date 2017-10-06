@@ -1,0 +1,57 @@
+<%= form_with(model: invoice_item, local: true) do |form| %>
+  <% if invoice_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(invoice_item.errors.count, "error") %> prohibited this invoice_item from being saved:</h2>
+
+      <ul>
+      <% invoice_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :invoice_id %>
+    <%= form.text_field :invoice_id, id: :invoice_item_invoice_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, id: :invoice_item_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hsn_code %>
+    <%= form.text_field :hsn_code, id: :invoice_item_hsn_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :udm %>
+    <%= form.text_field :udm, id: :invoice_item_udm %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity, id: :invoice_item_quantity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rate %>
+    <%= form.number_field :rate, id: :invoice_item_rate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.number_field :amount, id: :invoice_item_amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :discount %>
+    <%= form.number_field :discount, id: :invoice_item_discount %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

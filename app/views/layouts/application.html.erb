@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ParbhatTravels</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body data-gr-c-s-loaded="true">
+<% if user_signed_in? %>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Prabhat Group</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id='navbarsExample02'>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item <%= active_tab_class('companies') %>">
+            <%= link_to "Companies", companies_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item <%= active_tab_class('clients') %>">
+            <%= link_to "Clients", clients_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item <%= active_tab_class('invoices') %>">
+            <%= link_to "Invoices", invoices_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item" style="text-align:right"><a class='nav-link'>heddddllo</a></li>
+        </ul>
+        <span style="color: white">Log in as: </span>
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown06" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.email %></a>
+
+            <div class="dropdown-menu" aria-labelledby="dropdown06">
+              <%= link_to 'Signout', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+<% end %>
+<p class="notice"><%= notice %></p>
+
+<p class="alert"><%= alert %></p>
+<%= yield %>
+</body>
+</html>
