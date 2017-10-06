@@ -65,5 +65,5 @@ gem 'exception_notification'
 
 group :production do
   gem 'pg'
-  ruby "2.4.1"
+  # ruby "2.4.1"
 end
