@@ -88,4 +88,29 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  #default url options
+  config.action_mailer.default_url_options = { host: 'secret-depths-23397.herokuapp.com' }
+
+  #smtp settings
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      :authentication => :plain,
+      :address => 'smtp.sendgrid.net',
+      :port => 587,
+      :domain => ENV['SENDGRID_DOMAIN'],
+      :user_name => ENV['SENDGRID_USERNAME'],
+      :password => ENV['SENDGRID_PASSWORD'],
+      :enable_starttls_auto => true
+  }
+
+
+  #exception notifier settings
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+                                          :email => {
+                                              :deliver_with => :deliver, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
+                                              :email_prefix => "[PREFIX] ",
+                                              :sender_address => %{"notifier" <notifier@example.com>},
+                                              :exception_recipients => %w{sachin238@gmail.com}
+                                          }
 end

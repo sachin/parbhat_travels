@@ -60,6 +60,8 @@ gem 'jquery-rails'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'currency-in-words'
 gem 'devise'
+# for exception notifier
+gem 'exception_notification'
 
 group :production do
   gem 'pg'
